@@ -8,15 +8,27 @@ pipeline {
   }
   stages {
     stage('test') {
-      steps {
-        sh '''pwd
+      parallel {
+        stage('test') {
+          steps {
+            sh '''pwd
 ls'''
-      }
-    }
+          }
+        }
 
-    stage('error') {
-      steps {
-        unstable '11'
+        stage('test2') {
+          steps {
+            sleep 5
+            sh 'pwd'
+          }
+        }
+
+        stage('test4') {
+          steps {
+            sh 'pwd'
+          }
+        }
+
       }
     }
 
