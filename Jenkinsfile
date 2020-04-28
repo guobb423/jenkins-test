@@ -14,7 +14,7 @@ ls'''
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         unstable '11'
       }
